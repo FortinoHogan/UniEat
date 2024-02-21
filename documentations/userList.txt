@@ -1,0 +1,11 @@
+Customer:
+customerSatu: asdasd
+
+Tenant:
+tenantSatu: asdas123
+tenantDua: asdas123
+
+Admin:
+adminSatu: abcde123
+adminDua: abcde123
+adminTiga: abcde123

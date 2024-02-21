@@ -1,0 +1,60 @@
+[ ] Customer and admin can see several shops with name, and rating info, and customer can see all categories
+[ ] Tenant can see all current orders 
+[ ] Navigation bar & access adapts according to user role
+[V] User can log out 
+[ ] Searching feature applies live search 
+[ ] Guest and customer can search the shops 
+[ ] Admin can search tenant 
+[ ] Tenant can search customer 
+[ ] Guest and customer can search shop by categories 
+[ ] Tenant can see the detail of the current orders 
+[ ] Tenant can complete a finish order 
+[ ] Shop Guest and customer can see the shop categories and items 
+[ ] Item Detail All validation in button "Add to Cart" work as expected 
+[ ] Guest, customer and tenant can see ratings and reviews of a shop 
+[V] User can register 
+[V] All validation work as expected 
+[V] User’s password is properly encrypted 
+[ ] User receives verification email 
+[V] User can sign-in 
+[V] All validation work as expected 
+[ ] User's session is set 
+[ ] User can request forgot password and receive an email 
+[ ] All validation work as expected 
+[ ] User’s password is reset 
+[ ] Customer can see profile data 
+[ ] Tenant can see profile data and logo picture 
+[ ] Customer can edit profile data 
+[ ] Tenant can edit profile data and logo picture 
+[ ] All validation work as expected 
+[ ] Customer can add items to shopping cart 
+[ ] Customer can remove items from shopping cart 
+[ ] Customer can see total price on the shopping cart 
+[ ] Customer can purchase all items from shopping cart 
+[ ] All validation work as expected 
+[ ] Customer can see history 
+[ ] Customer can give rate and review 
+[ ] All validation work as expected 
+[ ] Tenant can see completed orders 
+[ ] Tenant can see all items 
+[ ] Tenant can insert new items 
+[ ] Tenant can edit items information 
+[ ] Tenant can delete items 
+[ ] All validation work as expected 
+[V] Admin can see all categories 
+[V] Admin can insert new categories 
+[V] Admin can edit categories 
+[V] Admin can delete categories 
+[V] All validation work as expected 
+[V] Admin can see all tenant 
+[V] Admin can insert new tenant 
+[V] Admin can edit tenant 
+[V] Admin can delete tenant 
+[V] All validation work as expected 
+[ ] Tenant receives email for default random password 
+[V] Admin can see all admin 
+[V] Admin can insert new Admin 
+[V] Admin can edit Admin 
+[V] Admin can delete Admin 
+[V] All validation work as expected 
+[ ] Admin receives email for default random password 

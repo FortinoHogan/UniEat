@@ -1,0 +1,277 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 1rem 3rem
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-container form {
+    border: yellow 3px solid;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+
+.form-container li {
+    list-style: none;
+}
+
+.form-container input {
+    margin: 0.5rem;
+    width: 15rem;
+    height: 2rem;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.dropdown img {
+    width: 3rem;
+    border: #000 2px solid;
+    border-radius: 100%;
+}
+
+.dropdown-menus {
+    display: none;
+    min-width: 10rem;
+    position: absolute;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    box-shadow: #000 1px 1px 1rem;
+    z-index: 1;
+    height: 11rem;
+}
+
+.dropdown-menus a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown:hover .dropdown-menus {
+    display: block;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+    gap: 3rem;
+}
+
+.section-header-admin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 50%;
+}
+
+.section-header button {
+    border: yellow 2px solid;
+    padding: 0.5rem 1rem;
+    border-radius: 5rem;
+    cursor: pointer;
+}
+
+.addAdmin-form {
+    margin-top: 2rem;
+}
+
+.addAdmin-form div {
+    display: flex;
+    align-items: center;
+}
+
+.addAdmin-form label {
+    width: 6rem;
+}
+
+.radio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.radio input {
+    width: 1rem;
+}
+
+.addAdmin-buttons {
+    gap: 2rem;
+}
+
+.manage-admin-view {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.admin-card-container {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    border: yellow 3px solid;
+    width: 50%;
+    padding: 3rem;
+}
+
+.admin-card img {
+    width: 5rem;
+}
+
+.admin-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: yellow 2px solid;
+}
+
+.tenants-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    padding: 3rem;
+}
+
+.tenants-card-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 2rem;
+}
+
+.tenant-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    gap: 2rem;
+    border: yellow 3px solid;
+}
+
+.category-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.new-category-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.close {
+    width: 100%;
+}
+
+.close-button {
+    float: right;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.5rem;
+}
+
+.new-category-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+}
+
+.modal-content {
+    text-align: center;
+}
+
+.new-category-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+    gap: 2rem;
+}
+
+.category-card-container {
+    display: flex;
+    flex-direction: column;
+    border: yellow 3px solid;
+    width: 50%;
+    padding: 3rem;
+    gap: 2rem;
+}
+
+.category-card {
+    display: flex;
+    justify-content: space-between;
+    border: yellow 2px solid;
+}
+
+.category-card-buttons {
+    display: flex;
+    gap: 2rem;
+}
+
+.edit-category {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.edit-category-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+}
