@@ -254,3 +254,152 @@ function editCategory($data)
 
     return mysqli_affected_rows($conn);
 }
+
+// CRUD ITEM
+
+function uploadMenu()
+{
+    $namaFile = $_FILES['gambar']['name'];
+    $ukuranFile = $_FILES['gambar']['size'];
+    $error = $_FILES['gambar']['error'];
+    $tmpName = $_FILES['gambar']['tmp_name'];
+
+    if ($error === 4) {
+        echo "
+        <script>
+            alert('Logo must be choosen!');
+        </script>
+        ";
+        return false;
+    }
+
+    $ekstensiValid = ['jpg', 'jpeg', 'png', 'gif', 'svg'];
+
+    $ekstensigambar = explode('.', $namaFile);
+    $ekstensigambar = strtolower(end($ekstensigambar));
+
+    if (!in_array($ekstensigambar, $ekstensiValid)) {
+        echo "
+        <script>
+            alert('Logo is not valid!');
+        </script>
+        ";
+        return false;
+    }
+
+    if ($ukuranFile > 2000000) {
+        echo "
+        <script>
+            alert('File size is too large!');
+        </script>
+        ";
+        return false;
+    }
+
+    $namaFileBaru = uniqid();
+    $namaFileBaru .= '.';
+    $namaFileBaru .= $ekstensigambar;
+
+    move_uploaded_file($tmpName, './styles/images/menu-logos/' . $namaFileBaru);
+    return $namaFileBaru;
+}
+function addItem($data)
+{
+    global $conn;
+
+    $name = $data['name'];
+    $price = $data['price'];
+    $description = $data['description'];
+    $tenant_id = $data['tenant_id'];
+
+    $gambar = uploadMenu();
+    if (!$gambar) {
+        return false;
+    }
+
+    $last_id_query = mysqli_query($conn, "SELECT id FROM menus ORDER BY id DESC LIMIT 1");
+    $last_id_result = mysqli_fetch_assoc($last_id_query);
+    $last_id = $last_id_result ? (int)substr($last_id_result['id'], 2) : 0;
+    $new_id = "IT" . str_pad($last_id + 1, 3, "0", STR_PAD_LEFT);
+
+    $query = "INSERT INTO menus VALUES ('$new_id','$name', '$description', '$price', '$gambar', '$tenant_id')";
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+}
+
+function deleteItem($id)
+{
+    global $conn;
+
+    mysqli_query($conn, "DELETE FROM menus WHERE id = '$id'");
+    return mysqli_affected_rows($conn);
+}
+
+// function editUploadMenu($defaultImage)
+// {
+//     $namaFile = $_FILES['']['name'];
+//     $ukuranFile = $_FILES['gambar']['size'];
+//     $error = $_FILES['gambar']['error'];
+//     $tmpName = $_FILES['gambar']['tmp_name'];
+
+//     if ($error === 4) {
+//         echo "
+//         <script>
+//             alert('Logo must be choosen!');
+//         </script>
+//         ";
+//         return false;
+//     }
+
+//     $ekstensiValid = ['jpg', 'jpeg', 'png', 'gif', 'svg'];
+
+//     $ekstensigambar = explode('.', $namaFile);
+//     $ekstensigambar = strtolower(end($ekstensigambar));
+
+//     if (!in_array($ekstensigambar, $ekstensiValid)) {
+//         echo "
+//         <script>
+//             alert('Logo is not valid!');
+//         </script>
+//         ";
+//         return false;
+//     }
+
+//     if ($ukuranFile > 2000000) {
+//         echo "
+//         <script>
+//             alert('File size is too large!');
+//         </script>
+//         ";
+//         return false;
+//     }
+
+//     $namaFileBaru = uniqid();
+//     $namaFileBaru .= '.';
+//     $namaFileBaru .= $ekstensigambar;
+
+//     move_uploaded_file($tmpName, './styles/images/menu-logos/' . $namaFileBaru);
+//     return $namaFileBaru;
+// }
+
+
+// function updateItem($data)
+// {
+//     global $conn;
+
+//     $id = $data['id'];
+//     $name = $data['name'];
+//     $price = $data['price'];
+//     $description = $data['description'];
+//     $defaultImage = './styles/images/menu-logos/' . $data['logo'];
+//     $gambar = editUploadMenu($defaultImage);
+//     if (!$gambar) {
+//         return false;
+//     }
+
+//     $query = "UPDATE menus SET name = '$name', price = '$price', description = '$description', logo = '$gambar' WHERE id = '$id'";
+//     mysqli_query($conn, $query);
+
+//     return mysqli_affected_rows($conn);
+// }

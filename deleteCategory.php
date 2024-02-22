@@ -29,7 +29,7 @@ if (deleteCategory($id) > 0) {
 } else {
     echo "
         <script>
-            alert('Kategoru gagal dihapus!');
+            alert('Kategori gagal dihapus!');
             document.location.href = 'manageCategories.php';
         </script>
         ";

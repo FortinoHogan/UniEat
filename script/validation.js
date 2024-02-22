@@ -8,6 +8,9 @@ function isLetter(char) {
 function validateName(username) {
     for (var i = 0; i < username.length; i++) {
         var char = username.charAt(i);
+        if (username.charAt(i) === ' ') {
+            continue;
+        }
         if (!isLetter(char)) {
             return false;
         }
@@ -23,6 +26,15 @@ function validatePhoneNum(phoneNum) {
     for (i; i < phoneNum.length; i++) {
 
         if (isNaN(phoneNum[i])) {
+            return false
+        }
+    }
+    return true
+}
+
+function validatePrice(price) {
+    for (var i = 0; i < price.length; i++) {
+        if (isNaN(price[i])) {
             return false
         }
     }
@@ -169,6 +181,45 @@ const addTenantValidation = () => {
     }
 }
 
+const addCategoryValidation = () => {
+    let category = document.querySelector("#category");
+    if (category.value == "") {
+        alert("Category cannot be blank");
+        return false
+    }
+    return true
+}
+
+const addItemValidation = () => {
+    let name = document.querySelector("#name");
+    let price = document.querySelector("#price");
+    if (name.value == "") {
+        alert("Name cannot be blank");
+        return false
+    }
+    else if (name.value.length < 5) {
+        alert("Name must be at least 5 letters");
+        return false
+    }
+    else if (!validateName(name.value)) {
+        alert("Name must only contain letters");
+        return false
+    }
+    if (price.value == "") {
+        alert("Price cannot be blank");
+        return false
+    }
+    else if (!validatePrice(price.value)) {
+        alert("Price must only contain numbers");
+        return false
+    }
+    else if (parseInt(price.value) < 1000) {
+        alert("Price must be at least 1000");
+        return false
+    }
+    return true
+}
+
 var addModal = document.querySelector(".add-category-modal");
 var editModal = document.querySelector(".edit-category-modal");
 var addBtn = document.querySelector(".new-category-button");
@@ -212,14 +263,4 @@ window.onclick = function (event) {
     if (event.target == editModal) {
         editModal.style.display = "none";
     }
-}
-
-
-const addCategoryValidation = () => {
-    let category = document.querySelector("#category");
-    if (category.value == "") {
-        alert("Category cannot be blank");
-        return false
-    }
-    return true
 }

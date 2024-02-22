@@ -16,6 +16,8 @@ if ($_SESSION['role'] !== 'tenant' && $_SESSION['role'] !== 'customer') {
 
 require 'functions.php';
 
+$menus = query("SELECT * FROM menus");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,9 +48,31 @@ require 'functions.php';
         </div>
     </nav>
     <hr>
-    <section>
-        <div class="section-header">
-            <p>Current Orders:</p>
+    <section class="menu-section">
+        <div class="menu-container">
+            <div class="tenant-card">
+                <img src="./styles/images/tenant-logos/<?= $_SESSION['logo']; ?>" alt="logo">
+                <p><?= $_SESSION['username']; ?></p>
+                <a href="newItems.php">New Items</a>
+            </div>
+            <?php foreach ($menus as $row) : ?>
+                <div onclick="location.href='editItem.php?id=<?= $row['id']; ?>';" class="menu-card">
+                    <img src="./styles/images/menu-logos/<?= $row['logo']; ?>" alt="logo">
+                    <div class="menu-card-detail">
+                        <div class="menu-card-atas">
+                            <p><?= $row['name']; ?></p>
+                            <p><?= $row['description']; ?></p>
+                        </div>
+                        <div class="menu-card-bawah">
+                            <p><?= $row['price']; ?></p>
+                            <div>
+                                <a href="editItem.php?id=<?= $row['id']; ?>">Edit</a>
+                                <a href="deleteItem.php?id=<?= $row['id']; ?>" onclick="return confirm('Yakin?');">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
     </section>
 </body>
