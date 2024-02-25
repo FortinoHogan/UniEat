@@ -42,8 +42,8 @@ $category = query("SELECT * FROM categories");
             </div>
             <div class="dropdown-menus">
                 <a href="landingPageCustomer.php">Home</a>
-                <a href="">History</a>
-                <a href="">Settings</a>
+                <a href="customerHistory.php">History</a>
+                <a href="customerSettings.php">Settings</a>
                 <a href="logout.php">Logout</a>
             </div>
         </div>

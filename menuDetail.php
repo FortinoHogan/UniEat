@@ -19,28 +19,7 @@ if ($_SESSION['role'] !== 'customer' && $_SESSION['role'] !== 'tenant') {
 
 $id = $_GET['id'];
 
-$tenant = query("SELECT * FROM tenants where id = '$id'")[0];
-
-$menu = query("SELECT * FROM menus WHERE tenant_id = '$id'");
-
-if (isset($_POST['edit'])) {
-    if (editAdmin($_POST) > 0) {
-        echo "
-            <script>
-                alert('Admin berhasil diedit!');
-                document.location.href = 'manageAdmin.php';
-            </script>
-            ";
-    } else {
-
-        echo "
-            <script>
-                alert('Admin gagal diedit!');
-                document.location.href = 'manageAdmin.php';
-            </script>
-            ";
-    }
-}
+$menu = query("SELECT * FROM menus WHERE id = '$id'")[0];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,16 +51,21 @@ if (isset($_POST['edit'])) {
     </nav>
     <hr>
     <section>
-        <div class="tenant-card">
-            <img src="./styles/images/tenant-logos/<?= $tenant['logo']; ?>" alt="logo">
-            <p><?= $tenant['username']; ?></p>
+        <div class="menu-detail-card">
+            <div class="menu-detail-card-content">
+                <img id="logo" src="./styles/images/menu-logos/<?= $menu['logo']; ?>" alt="logo">
+                <p id="name"><?= $menu['name']; ?></p>
+                <p><?= $menu['description']; ?></p>
+                <p>Notes:</p>
+                <textarea name="" id="notes" cols="30" rows="10"></textarea>
+                <div class="add-item-buttons">
+                    <button>-</button>
+                    <p>0</p>
+                    <button>+</button>
+                </div>
+                <button>Add To Cart</button>
+            </div>
         </div>
-        <?php foreach ($menu as $row) : ?>
-            <a href="menuDetail.php?id=<?= $row['id']; ?>" class="tenant-card">
-                <img src="./styles/images/menu-logos/<?= $row['logo']; ?>" alt="logo">
-                <p><?= $row['name']; ?></p>
-            </a>
-        <?php endforeach; ?>
     </section>
 </body>
 
