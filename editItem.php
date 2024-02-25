@@ -70,11 +70,12 @@ if (isset($_POST['update'])) {
     <hr>
     <section class="form-container addAdmin-form">
         <form action="" method="post" onsubmit="return addItemValidation()" enctype="multipart/form-data">
-            <input type="hidden" name="tenant_id" id="tenant_id" value="<?= $_SESSION['id']; ?>">
+            <input type="hidden" name="id" id="id" value="<?= $menu['id']; ?>">
+            <input type="hidden" name="menu_logo" id="menu_logo" value="<?= $menu['logo']; ?>">
             <div>
                 <label for="gambar">Current Picture</label>
                 <img src="./styles/images/menu-logos/<?= $menu['logo']; ?>" alt="">
-                <input type="file" name="gambar" id="gambar" value="<?= $menu['logo']; ?>">
+                <input type="file" name="gambar" id="gambar">
             </div>
             <div>
                 <label for="name">Name</label>

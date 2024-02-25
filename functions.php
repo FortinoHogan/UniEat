@@ -336,70 +336,30 @@ function deleteItem($id)
     return mysqli_affected_rows($conn);
 }
 
-// function editUploadMenu($defaultImage)
-// {
-//     $namaFile = $_FILES['']['name'];
-//     $ukuranFile = $_FILES['gambar']['size'];
-//     $error = $_FILES['gambar']['error'];
-//     $tmpName = $_FILES['gambar']['tmp_name'];
-
-//     if ($error === 4) {
-//         echo "
-//         <script>
-//             alert('Logo must be choosen!');
-//         </script>
-//         ";
-//         return false;
-//     }
-
-//     $ekstensiValid = ['jpg', 'jpeg', 'png', 'gif', 'svg'];
-
-//     $ekstensigambar = explode('.', $namaFile);
-//     $ekstensigambar = strtolower(end($ekstensigambar));
-
-//     if (!in_array($ekstensigambar, $ekstensiValid)) {
-//         echo "
-//         <script>
-//             alert('Logo is not valid!');
-//         </script>
-//         ";
-//         return false;
-//     }
-
-//     if ($ukuranFile > 2000000) {
-//         echo "
-//         <script>
-//             alert('File size is too large!');
-//         </script>
-//         ";
-//         return false;
-//     }
-
-//     $namaFileBaru = uniqid();
-//     $namaFileBaru .= '.';
-//     $namaFileBaru .= $ekstensigambar;
-
-//     move_uploaded_file($tmpName, './styles/images/menu-logos/' . $namaFileBaru);
-//     return $namaFileBaru;
-// }
+function updateItem($data)
+{
+    global $conn;
 
 
-// function updateItem($data)
-// {
-//     global $conn;
+    $id = $data['id'];
+    $name = $data['name'];
+    $price = $data['price'];
+    $description = $data['description'];
+    $oldLogo = $data['menu_logo'];
+    if ($_FILES['gambar']['error'] === 4) {
+        $gambar = $oldLogo;
+    } else {
+        $gambar = uploadMenu();
+        if (!$gambar) {
+            return false;
+        }
+    }
+    $query = "UPDATE menus SET name = '$name', price = '$price', description = '$description', logo = '$gambar' WHERE id = '$id'";
+    mysqli_query($conn, $query);
 
-//     $id = $data['id'];
-//     $name = $data['name'];
-//     $price = $data['price'];
-//     $description = $data['description'];
-//     $defaultImage = './styles/images/menu-logos/' . $data['logo'];
-//     $gambar = editUploadMenu($defaultImage);
-//     if (!$gambar) {
-//         return false;
-//     }
+    if ($_FILES['gambar']['error'] !== 4 && $gambar !== $oldLogo) {
+        unlink('./styles/images/menu-logos/' . $oldLogo);
+    }
 
-//     $query = "UPDATE menus SET name = '$name', price = '$price', description = '$description', logo = '$gambar' WHERE id = '$id'";
-//     mysqli_query($conn, $query);
-
-//     return mysqli_affected_rows($conn);
-// }
+    return mysqli_affected_rows($conn);
+}

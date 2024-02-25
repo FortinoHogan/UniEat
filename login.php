@@ -34,7 +34,6 @@ if (isset($_POST['login'])) {
             $_SESSION['id'] = $row['id'];
             $_SESSION['logo'] = $row['logo'];
             $_SESSION['role'] = 'tenant';
-            echo"<script>console.log($_SESSION)</script>";
 
             header('location: landingPageTenant.php');
         }

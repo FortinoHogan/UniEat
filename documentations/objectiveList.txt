@@ -36,11 +36,11 @@
 [ ] Customer can give rate and review 
 [ ] All validation work as expected 
 [ ] Tenant can see completed orders 
-[ ] Tenant can see all items 
-[ ] Tenant can insert new items 
-[ ] Tenant can edit items information 
-[ ] Tenant can delete items 
-[ ] All validation work as expected 
+[V] Tenant can see all items 
+[V] Tenant can insert new items 
+[V] Tenant can edit items information 
+[V] Tenant can delete items 
+[V] All validation work as expected 
 [V] Admin can see all categories 
 [V] Admin can insert new categories 
 [V] Admin can edit categories 
